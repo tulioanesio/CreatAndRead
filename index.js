@@ -31,3 +31,14 @@ function read() {
     }
   }
 }
+
+function delet(){
+    var delet = document.getElementById("delet");
+    var deleted = document.getElementById("add").value; 
+    var deletedIndex = names.indexOf(deleted); 
+
+    names.splice(deletedIndex, 1);
+
+    delet.textContent = "Name deleted sucessfully!"
+    
+}
