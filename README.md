@@ -16,5 +16,5 @@ Name List Manager is a simple web application that allows you to perform basic C
 ## Access the Website
 
 The website is hosted on Vercel.  
-🔗 [Click here to access](https://creat-and-read.vercel.app/)
+🔗 [Click here to access](https://name-list-manager.vercel.app/)
 
