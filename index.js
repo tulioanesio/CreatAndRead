@@ -1,17 +1,17 @@
-var names = [];
+let names = [];
 
 function create() {
-  var add = document.getElementById("add").value;
-  var added = document.getElementById("added");
+  let add = document.getElementById("add").value;
+  let message = document.getElementById("message");
 
   if (add == "") {
-    added.textContent = "Enter a valid name!";
+    message.textContent = "Enter a valid name!";
   } else if (names > 10) {
-    added.textContent =
+    message.textContent =
       "You have reached the maximum number of names you can add.";
   } else {
     names.push(add);
-    added.textContent =
+    message.textContent =
       "Name added successfully! You have " +
       names.length +
       " name(s) registered!";
@@ -19,26 +19,45 @@ function create() {
 }
 
 function read() {
-  var read = document.getElementById("read");
+  let message = document.getElementById("message");
 
   if (names == "") {
-    read.textContent = "You need add a name to list it.";
+    message.textContent = "You need add a name to list it.";
   } else {
-    read.innerHTML = "The added names are: <br>";
+    message.innerHTML = "The added names are: <br>";
 
     for (var i = 0; i < names.length; i++) {
-      read.innerHTML += names[i] + "<br>";
+      message.innerHTML += names[i] + "<br>";
     }
   }
 }
 
-function delet(){
-    var delet = document.getElementById("delet");
-    var deleted = document.getElementById("add").value; 
-    var deletedIndex = names.indexOf(deleted); 
+function update() {
+  let message = document.getElementById("message");
+  let oldName = document.getElementById("add").value;
+  let newName = prompt("Enter the new name:");
 
-    names.splice(deletedIndex, 1);
+  if (newName == "" || !oldName) {
+    message.textContent = "Please enter a valid name to update.";
+    return;
+  }
 
-    delet.textContent = "Name deleted sucessfully!"
-    
+  let index = names.indexOf(oldName);
+
+  if (index === -1) {
+    message.textContent = "Name not found in the list.";
+  } else {
+    names[index] = newName;
+    message.textContent = `Name updated successfully! The name is now: ${newName}`;
+  }
+}
+
+function delet() {
+  let message = document.getElementById("message");
+  let deleted = document.getElementById("add").value;
+  let deletedIndex = names.indexOf(deleted);
+
+  names.splice(deletedIndex, 1);
+
+  message.textContent = "Name deleted sucessfully!";
 }
