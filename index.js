@@ -1,5 +1,18 @@
 let names = [];
 
+document.addEventListener("keydown", function (pressed) {
+  if (pressed.key == "Enter") {
+    create();
+  } else if (pressed.key == "1") {
+    read();
+  } else if (pressed.key == "2") {
+    update();
+  } else if (pressed.key == "3") {
+    delet();
+  } else {
+  }
+});
+
 function create() {
   let add = document.getElementById("add").value;
   let message = document.getElementById("message");
@@ -57,7 +70,11 @@ function delet() {
   let deleted = document.getElementById("add").value;
   let deletedIndex = names.indexOf(deleted);
 
-  names.splice(deletedIndex, 1);
+  if (deletedIndex == -1) {
+    message.textContent = "Select a valid name to be deleted!";
+  } else {
+    names.splice(deletedIndex, 1);
 
-  message.textContent = "Name deleted sucessfully!";
+    message.textContent = "Name deleted sucessfully!";
+  }
 }
